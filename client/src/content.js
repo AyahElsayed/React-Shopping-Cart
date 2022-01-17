@@ -1,9 +1,10 @@
 import React from 'react'
+import { words } from './staticWords';
 
 const Content = () => {
   return (
     <div className='content'>
-      content
+      {words.content}
     </div>
   )
 }

@@ -1,10 +1,12 @@
 import React from 'react'
 import './header.scss'
+// import {words} from '../../staticWords'
+import { words } from './../../staticWords';
 
 const Header = () => {
   return (
     <div className='header'>
-      React shopping cart
+      {words.headerTitle}
     </div>
   )
 }
