@@ -31,5 +31,15 @@ body {
 
 .content {
   grid-area: content;
-  background-color: green;
+  // background-color: green;
+}
+.wrapper{
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+  
+
+  .filter{
+    width: 30%;
+  }
 }
