@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState,useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Filter from './components/filter/filter';
 // import { words } from './staticWords';
 import Products from './components/products/products';
@@ -78,7 +78,7 @@ const Content = () => {
           handleFilterBySize={handleFilterBySize}
         />
       </div>
-      <Cart cartItem={cartItem} removeFromCart={removeFromCart}/>
+      <Cart cartItem={cartItem} removeFromCart={removeFromCart} />
     </div>
   )
 }
