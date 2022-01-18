@@ -4,9 +4,11 @@ import Filter from './components/filter/filter';
 // import { words } from './staticWords';
 import Products from './components/products/products';
 import data from './data.json'
+import Cart from './components/cart/Cart';
 
 const Content = () => {
   const [products, setProduts] = useState(data)
+  const [cartItem, setCartItem] = useState(data)
   const [sort, setSort] = useState("")
   const [size, setSize] = useState("")
 
@@ -45,13 +47,14 @@ const Content = () => {
       <div className='wrapper'>
         <Products products={products} />
         <Filter
+          productsNumber={ products.length}
           size={size}
           sort={sort}
           handleFilterByOrder={handleFilterByOrder}
           handleFilterBySize={handleFilterBySize}
-
         />
       </div>
+      <Cart cartItem={cartItem}/>
     </div>
   )
 }

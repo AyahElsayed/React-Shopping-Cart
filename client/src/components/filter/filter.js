@@ -2,11 +2,11 @@ import React from 'react'
 import './filter.scss'
 
 const Filter = (props) => {
-  const { handleFilterBySize, size, handleFilterByOrder, sort } = props
+  const { handleFilterBySize, size, handleFilterByOrder, sort, productsNumber } = props
   return (
     <div className='filter'>
       <h2 className='filterTitle'> Filter</h2>
-      <div className='numOfProducts'> Number of products</div>
+      <div className='numOfProducts'> Number of products {productsNumber}</div>
       <div className='filterBySize'>
         <span>Filter</span>
         <select value={size} className='filterSelsect' onChange={handleFilterBySize}>
