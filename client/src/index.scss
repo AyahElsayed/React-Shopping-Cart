@@ -11,6 +11,9 @@ body {
 #root{
   height: 100vh;
 }
+*{
+  margin: 0;
+}
 
 .App {
   height: 100%;
@@ -37,9 +40,4 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 30px;
-  
-
-  .filter{
-    width: 30%;
-  }
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import Filter from './components/filter/filter';
 // import { words } from './staticWords';
 import Products from './components/products/products';
 import data from './data.json'
@@ -11,9 +12,7 @@ const Content = () => {
     <div className='content'>
       <div className='wrapper'>
         <Products products={products} />
-        <div className='filter'>
-          filter
-        </div>
+        <Filter />
       </div>
     </div>
   )
