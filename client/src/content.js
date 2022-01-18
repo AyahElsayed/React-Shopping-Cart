@@ -7,12 +7,50 @@ import data from './data.json'
 
 const Content = () => {
   const [products, setProduts] = useState(data)
-  console.log(products)
+  const [sort, setSort] = useState("")
+  const [size, setSize] = useState("")
+
+
+  const handleFilterBySize = (e) => {
+    setSize(e.target.value)
+    if (e.target.value === "ALL") {
+      setProduts(data)
+      // console.log(products)
+    }
+    else {
+      let productsClone = [...products];
+      let newProducts = productsClone.filter(p => p.sizes.indexOf(e.target.value) !== -1);
+      console.log(newProducts)
+      setProduts(newProducts)
+    }
+  }
+  const handleFilterByOrder = (e) => {
+    let order = e.target.value;
+    setSort(order);
+    let productsClone = [...products];
+    let newProducts = productsClone.sort(function (a, b) {
+      if (order === "lowest") {
+        return a.price - b.price
+      } else if (order === "highest") {
+        return b.price - a.price
+      } else {
+        return a.id < b.id ? 1 : -1
+      }
+    });
+    setProduts(newProducts)
+  }
+
   return (
     <div className='content'>
       <div className='wrapper'>
         <Products products={products} />
-        <Filter />
+        <Filter
+          size={size}
+          sort={sort}
+          handleFilterByOrder={handleFilterByOrder}
+          handleFilterBySize={handleFilterBySize}
+
+        />
       </div>
     </div>
   )
