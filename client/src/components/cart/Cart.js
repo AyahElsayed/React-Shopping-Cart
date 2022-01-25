@@ -53,7 +53,7 @@ const Cart = (props) => {
         {cartItem.length !== 0 && (
           <div className='cartFooter'>
             <div className='total'> Total: ${cartItem.reduce((acc, p) => {
-              return acc + p.price
+              return acc + (p.price * p.qty)
             }, 0)}</div>
             <button onClick={() => setShowForm(true)}>select products</button>
           </div>
