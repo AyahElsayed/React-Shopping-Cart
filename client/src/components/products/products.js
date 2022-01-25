@@ -1,8 +1,10 @@
 import React from 'react'
 import './products.scss'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ProductModal from './productModal'
 import Bounce from 'react-reveal/Bounce'
+import { connect } from 'react-redux'
+import { fetchProducts } from '../../store/actions/products';
 
 const Products = (props) => {
   const { products, addToCart } = props
@@ -16,10 +18,15 @@ const Products = (props) => {
     setProdut(false)
   }
 
+  useEffect(() => {
+    props.fetchProducts()
+  }, [])
+
+
   return (
     <Bounce left cascade>
       <div className='products'>
-        {products.map((product) => (
+        {products && products.length ? products.map((product) => (
           <div className='product_item' key={product.id}>
             <a href="#" onClick={() => openModal(product)}>
               <img src={product.imageUrl} alt={product.title} />
@@ -30,7 +37,7 @@ const Products = (props) => {
             </div>
             <button onClick={() => addToCart(product)}>Add to cart</button>
           </div>
-        ))}
+        )) : "loading.."}
 
         <ProductModal product={product} closeModal={closeModal} />
       </div>
@@ -38,4 +45,8 @@ const Products = (props) => {
   )
 }
 
-export default Products
+export default connect((state) => {
+  return {
+    products: state.products.products
+  }
+}, { fetchProducts })(Products)
