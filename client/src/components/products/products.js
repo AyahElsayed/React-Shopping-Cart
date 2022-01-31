@@ -7,19 +7,19 @@ import { connect } from 'react-redux'
 import { fetchProducts } from '../../store/actions/products';
 
 const Products = (props) => {
-  const { products, addToCart } = props
-  const [product, setProdut] = useState("")
+  const { products, addToCart ,fetchProducts} = props
+  const [product, setProduct] = useState("")
 
   const openModal = (product) => {
-    setProdut(product)
+    setProduct(product)
   }
 
   const closeModal = () => {
-    setProdut(false)
+    setProduct(false)
   }
 
   useEffect(() => {
-    props.fetchProducts()
+    fetchProducts()
   }, [])
 
 
@@ -47,6 +47,6 @@ const Products = (props) => {
 
 export default connect((state) => {
   return {
-    products: state.products.products
+    products: state.products.filterProducts
   }
 }, { fetchProducts })(Products)

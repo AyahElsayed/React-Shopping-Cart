@@ -7,7 +7,7 @@ import data from './data.json'
 import Cart from './components/cart/Cart';
 
 const Content = () => {
-  const [products, setProduts] = useState(data)
+  const [products, setProducts] = useState([])
   const [cartItem, setCartItem] = useState(JSON.parse(localStorage.getItem('cartItem')) || []);
   const [sort, setSort] = useState("")
   const [size, setSize] = useState("")
@@ -16,14 +16,14 @@ const Content = () => {
   const handleFilterBySize = (e) => {
     setSize(e.target.value)
     if (e.target.value === "ALL") {
-      setProduts(data)
+      setProducts(data)
       // console.log(products)
     }
     else {
       let productsClone = [...products];
       let newProducts = productsClone.filter(p => p.sizes.indexOf(e.target.value) !== -1);
       console.log(newProducts)
-      setProduts(newProducts)
+      setProducts(newProducts)
     }
   }
   const handleFilterByOrder = (e) => {
@@ -39,7 +39,7 @@ const Content = () => {
         return a.id < b.id ? 1 : -1
       }
     });
-    setProduts(newProducts)
+    setProducts(newProducts)
   }
 
   const addToCart = (product) => {
