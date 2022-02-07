@@ -59,7 +59,7 @@ const Content = () => {
 
   const removeFromCart = (product) => {
     const cartItemsClone = [...cartItem];
-    setCartItem(cartItemsClone.filter(p => p.id !== product.id))
+    setCartItem(cartItemsClone.filter(p => p._id !== product._id))
   }
 
   useEffect(() => {
